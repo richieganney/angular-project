@@ -1,10 +1,32 @@
 <div [ngClass]="setClasses()">
-    <h1 style="color: blueviolet;">Title</h1>
-    <ul>
-        <li>
-             <button (click)="onDelete(todo)" class="del">x</button>
-        </li>
-    </ul>
+
+        <h1 style="color: blueviolet;">Add</h1>
+        <ul>
+            <li *ngFor="let add of tickets.add">
+                {{ add.name }}<button (click)="onDelete(add)" class="del">x</button>
+            </li>
+        </ul>
+
+        <h1 style="color: blueviolet;">Drop</h1>
+        <ul>
+            <li *ngFor="let drop of tickets.drop">
+                {{ drop.name }}<button (click)="onDelete(drop)" class="del">x</button>
+            </li>
+        </ul>
+
+        <h1 style="color: blueviolet;">Keep</h1>
+        <ul>
+            <li *ngFor="let keep of tickets.keep">
+                {{ keep.name }}<button (click)="onDelete(keep)" class="del">x</button>
+            </li>
+        </ul>
+
+        <h1 style="color: blueviolet;">Improve</h1>
+        <ul>
+            <li *ngFor="let improve of tickets.improve">
+                {{ improve.name }}<button (click)="onDelete(improve)" class="del">x</button>
+            </li>
+        </ul>
     
 </div>
 

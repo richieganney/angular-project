@@ -15,8 +15,6 @@ export class TodoItemComponent implements OnInit {
   constructor(private todoService:TodoService) { }
 
   ngOnInit(): void {
-    console.log("hello")
-    console.log(this.tickets)
   }
 
   // set dynamic classes
@@ -30,6 +28,5 @@ export class TodoItemComponent implements OnInit {
 
   onDelete(todo) {
     this.deleteTodo.emit(todo);
-    console.log(todo);
   }
 }

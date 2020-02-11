@@ -21,10 +21,11 @@ export class TodosComponent implements OnInit {
     });
   }
 
-  deleteTodo(todo:Todo) {
-    this.todos = this.todos.filter(t => t.id !== todo.id)
-    this.todoService.deleteTodo(todo).subscribe();
-    console.log('done')
+  deleteTodo(ticket:Todo) {
+    console.log(this.tickets)
+    const cat = ticket.category
+    this.tickets = this.tickets[cat].filter(t => t.id !== ticket.id)
+    this.todoService.deleteTodo(ticket).subscribe();
   }
 
   addTodo(todo:Todo) {
