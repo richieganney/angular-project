@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Todo, Tickets } from 'src/app/models/Todo';
-import { TodoService } from '../../services/todo.service';
+import { Item, Tickets } from 'src/app/models/Schema';
+import { TicketService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -8,11 +8,11 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
-  @Input() todo:Todo;
+  @Input() todo:Item;
   @Input() tickets:Tickets;
-  @Output() deleteTodo: EventEmitter<Todo> = new EventEmitter();
+  @Output() deleteTodo: EventEmitter<Item> = new EventEmitter();
 
-  constructor(private todoService:TodoService) { }
+  constructor(private ticketService:TicketService) { }
 
   ngOnInit(): void {
   }

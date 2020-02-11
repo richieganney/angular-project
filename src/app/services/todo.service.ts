@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Todo, Tickets } from '../models/Todo';
+import { Item, Tickets } from '../models/Schema';
 import { Observable } from 'rxjs';
 
 const httpOptions = {
@@ -11,26 +11,26 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class TodoService {
+export class TicketService {
   ticketsUrl:string = 'http://localhost:3000/tickets';
 
   constructor(private http:HttpClient) { }
 
-  getTodos():Observable<Tickets> {
+  getTickets():Observable<Tickets> {
     return this.http.get<Tickets>(`${this.ticketsUrl}`);
   }
 
-  toggleCompleted(todo:Todo):Observable<any> {
+  // toggleCompleted(todo:Todo):Observable<any> {
+  //   const url = `${this.ticketsUrl}/${todo.id}`;
+  //   return this.http.put(url, todo, httpOptions);
+  // }
+
+  deleteTicket(todo:Item) {
     const url = `${this.ticketsUrl}/${todo.id}`;
-    return this.http.put(url, todo, httpOptions);
+    return this.http.delete<Item>(url, httpOptions);
   }
 
-  deleteTodo(todo:Todo) {
-    const url = `${this.ticketsUrl}/${todo.id}`;
-    return this.http.delete<Todo>(url, httpOptions);
-  }
-
-  addTodo(todo:Todo):Observable<Todo> {
-    return this.http.post<Todo>(this.ticketsUrl, todo, httpOptions);
+  addTicket(todo:Item):Observable<Item> {
+    return this.http.post<Item>(this.ticketsUrl, todo, httpOptions);
   }
 }

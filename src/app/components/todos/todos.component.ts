@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo, Tickets } from '../../models/Todo';
-import { TodoService } from '../../services/todo.service';
+import { Item, Tickets } from '../../models/Schema';
+import { TicketService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todos',
@@ -8,28 +8,28 @@ import { TodoService } from '../../services/todo.service';
   styleUrls: ['./todos.component.css']
 })
 
-export class TodosComponent implements OnInit {
+export class TicketsComponent implements OnInit {
   todos:any;
   tickets:Tickets;
   isLoaded:boolean = false;
 
-  constructor(private todoService:TodoService) { }
+  constructor(private ticketService:TicketService) { }
 
   ngOnInit() {
-    this.todoService.getTodos().subscribe(tickets => {
+    this.ticketService.getTickets().subscribe(tickets => {
       this.tickets = tickets;
       this.isLoaded = true
     });
   }
 
-  deleteTodo(ticket:Todo) {
+  deleteTodo(ticket:Item) {
     const category = ticket.category
     this.tickets[category] = this.tickets[category].filter(t => t.id !== ticket.id)
-    this.todoService.deleteTodo(ticket).subscribe();
+    this.ticketService.deleteTicket(ticket).subscribe();
   }
 
-  addTodo(ticket:Todo) {
-    this.todoService.addTodo(ticket).subscribe(t => {
+  addTodo(ticket:Item) {
+    this.ticketService.addTicket(ticket).subscribe(t => {
       this.tickets[t.category].push(t);
     });
   }
