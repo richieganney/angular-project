@@ -16,8 +16,8 @@ export class TodoService {
 
   constructor(private http:HttpClient) { }
 
-  getTodos():Observable<any> {
-    return this.http.get<any>(`${this.ticketsUrl}`);
+  getTodos():Observable<Tickets> {
+    return this.http.get<Tickets>(`${this.ticketsUrl}`);
   }
 
   toggleCompleted(todo:Todo):Observable<any> {

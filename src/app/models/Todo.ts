@@ -7,4 +7,7 @@ export class Todo {
 
 export class Tickets {
   add:Array<Todo>;
+  keep:Array<Todo>;
+  improve:Array<Todo>;
+  drop:Array<Todo>;
 }

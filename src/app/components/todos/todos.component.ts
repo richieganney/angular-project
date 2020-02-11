@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Todo } from '../../models/Todo';
+import { Todo, Tickets } from '../../models/Todo';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
@@ -9,19 +9,15 @@ import { TodoService } from '../../services/todo.service';
 })
 export class TodosComponent implements OnInit {
   todos:any;
-  add:any;
-  drop:any;
-  keep:any;
-  improve:any;
+  tickets:Tickets;
+  isLoaded:boolean = false;
 
   constructor(private todoService:TodoService) { }
 
   ngOnInit() {
     this.todoService.getTodos().subscribe(tickets => {
-      this.add = tickets.add;
-      this.keep = tickets.keep;
-      this.drop = tickets.drop;
-      this.improve = tickets.improve;
+      this.tickets = tickets;
+      this.isLoaded = true
     });
   }
 
