@@ -20,6 +20,7 @@ export class AddTodoComponent implements OnInit {
   onSubmit() {
     console.log(this.name)
     console.log(this.description)
+    console.log(this.category)
     const todo = {
       name: this.name,
       description: this.description,

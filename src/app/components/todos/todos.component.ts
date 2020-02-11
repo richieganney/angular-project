@@ -7,6 +7,7 @@ import { TodoService } from '../../services/todo.service';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css']
 })
+
 export class TodosComponent implements OnInit {
   todos:any;
   tickets:Tickets;
@@ -28,11 +29,9 @@ export class TodosComponent implements OnInit {
     this.todoService.deleteTodo(ticket).subscribe();
   }
 
-  addTodo(todo:Todo) {
-    this.todoService.addTodo(todo).subscribe(todo => {
-      this.todos.push(todo);
-      console.log("done")
+  addTodo(ticket:Todo) {
+    this.todoService.addTodo(ticket).subscribe(t => {
+      this.tickets[t.category].push(t);
     });
   }
-
 }
