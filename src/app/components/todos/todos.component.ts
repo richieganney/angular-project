@@ -23,9 +23,8 @@ export class TodosComponent implements OnInit {
   }
 
   deleteTodo(ticket:Todo) {
-    console.log(this.tickets)
-    const cat = ticket.category
-    this.tickets = this.tickets[cat].filter(t => t.id !== ticket.id)
+    const category = ticket.category
+    this.tickets[category] = this.tickets[category].filter(t => t.id !== ticket.id)
     this.todoService.deleteTodo(ticket).subscribe();
   }
 
