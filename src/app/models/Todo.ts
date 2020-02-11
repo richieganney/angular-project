@@ -1,5 +1,10 @@
 export class Todo {
   id:number;
-  title:string;
-  completed:boolean;
+  name:string;
+  description:string;
+  category:string
+}
+
+export class Tickets {
+  add:Array<Todo>;
 }

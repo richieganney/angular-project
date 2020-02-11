@@ -19,20 +19,9 @@ export class TodoItemComponent implements OnInit {
   // set dynamic classes
   setClasses() {
     let classes = {
-      todo: true,
-      'is-complete': this.todo.completed
+      todo: true
     }
     return classes;
-  }
-
-  onToggle(todo) {
-    console.log('toggle')
-    // toggle in UI
-    todo.completed = !todo.completed
-    // toggle on server
-    this.todoService.toggleCompleted(todo).subscribe(todo => {
-      console.log(todo)
-    })
   }
 
   onDelete(todo) {
