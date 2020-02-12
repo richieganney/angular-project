@@ -17,7 +17,6 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
       <p>{{ ticket.description }}!</p>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
     </div>
   `
 })
@@ -38,7 +37,7 @@ export class TicketPopupComponent {
 
   constructor(private modalService: NgbModal) {}
 
-  open(ticket:Tickets) {
+  open(ticket:Item) {
     const modalRef = this.modalService.open(TicketPopupContent);
     modalRef.componentInstance.ticket = ticket;
   }

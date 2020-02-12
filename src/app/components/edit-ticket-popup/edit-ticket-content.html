@@ -1,0 +1,15 @@
+<div class="modal-header">
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form class="form" ng-submit="onSubmit()">
+      <input type="text" name="name">
+      <input type="text" name="description">
+      <input type="text" name="category">
+      <input type="submit" value="Submit" class="btn">
+    </form>
+  </div>
+  <div class="modal-footer">
+</div>
