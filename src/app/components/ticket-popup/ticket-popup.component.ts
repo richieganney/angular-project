@@ -1,10 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Item, Tickets } from 'src/app/models/Schema';
 import { TicketService } from '../../services/todo.service';
+import "@angular/compiler";
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-ticket-popup',
+  selector: 'ticket-popup-content',
   template: `
     <div class="modal-header">
       <h4 class="modal-title">{{ ticket.name }}</h4>
@@ -13,29 +14,32 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
       </button>
     </div>
     <div class="modal-body">
-      <p>Hello, {{ ticket.description }}!</p>
+      <p>{{ ticket.description }}!</p>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
     </div>
   `
 })
-export class TicketPopupComponent {
-  @Input() ticket;
+export class TicketPopupContent {
+  @Input() ticket:Item;
   // @Input() tickets:Tickets;
 
   constructor(public activeModal: NgbActiveModal) {}
 }
 
 @Component({
-  selector: 'ticket-popup-component',
-  templateUrl: './ticket-popup-component.html'
+  selector: 'app-ticket-component',
+  templateUrl: './ticket-popup.component.html',
+  styleUrls: ['./ticket-popup.component.css']
 })
-export class NgbdModalComponent {
+export class TicketPopupComponent {
+  @Input() ticket:Item;
+
   constructor(private modalService: NgbModal) {}
 
   open(ticket:Tickets) {
-    const modalRef = this.modalService.open(TicketPopupComponent);
+    const modalRef = this.modalService.open(TicketPopupContent);
     modalRef.componentInstance.ticket = ticket;
   }
 }

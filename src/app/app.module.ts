@@ -10,7 +10,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { HeaderComponent } from './components/layout/header/header.component';
 import { AddTicketComponent } from './components/add-todo/add-todo.component';
 import { AboutComponent } from './components/pages/about/about.component';
-import { TicketPopupComponent } from './components/ticket-popup/ticket-popup.component';
+import { TicketPopupComponent, TicketPopupContent } from './components/ticket-popup/ticket-popup.component';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
@@ -22,8 +22,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
     AddTicketComponent,
     AboutComponent,
     TicketPopupComponent,
-    NgbActiveModal,
-    NgbModal
+    TicketPopupContent
   ],
   imports: [
     BrowserModule,

@@ -2,29 +2,33 @@
 
         <h1 style="color: blueviolet;">Add</h1>
         <ul>
-            <li *ngFor="let add of tickets.add">
-                {{ add.name }}<button (click)="onDelete(add)" class="del">x</button>
+            <li *ngFor="let ticket of tickets.add">
+                {{ ticket.name }}<button (click)="onDelete(ticket)" class="del">x</button>
+                <app-ticket-component [ticket]="ticket" ></app-ticket-component>
             </li>
         </ul>
 
         <h1 style="color: blueviolet;">Drop</h1>
         <ul>
-            <li *ngFor="let drop of tickets.drop">
-                {{ drop.name }}<button (click)="onDelete(drop)" class="del">x</button>
+            <li *ngFor="let ticket of tickets.drop">
+                {{ ticket.name }}<button (click)="onDelete(ticket)" class="del">x</button>
+                <app-ticket-component [ticket]="ticket"></app-ticket-component>
             </li>
         </ul>
 
         <h1 style="color: blueviolet;">Keep</h1>
         <ul>
-            <li *ngFor="let keep of tickets.keep">
-                {{ keep.name }}<button (click)="onDelete(keep)" class="del">x</button>
+            <li *ngFor="let ticket of tickets.keep">
+                {{ ticket.name }}<button (click)="onDelete(ticket)" class="del">x</button>
+                <app-ticket-component [ticket]="ticket"></app-ticket-component>
             </li>
         </ul>
 
         <h1 style="color: blueviolet;">Improve</h1>
         <ul>
-            <li *ngFor="let improve of tickets.improve">
-                {{ improve.name }}<button (click)="onDelete(improve)" class="del">x</button>
+            <li *ngFor="let ticket of tickets.improve">
+                {{ ticket.name }}<button (click)="onDelete(ticket)" class="del">x</button>
+                <app-ticket-component [ticket]="ticket"></app-ticket-component>
             </li>
         </ul>
     
