@@ -33,4 +33,14 @@ export class TicketService {
   addTicket(todo:Item):Observable<Item> {
     return this.http.post<Item>(this.ticketsUrl, todo, httpOptions);
   }
+
+  editTicket(ticket:Item) {
+    const putUrl = `${this.ticketsUrl}/${ticket.id}`
+    const item = {
+      name: ticket.name,
+      description: ticket.description,
+      category: ticket.category
+    }
+    return this.http.put<Item>(putUrl, item, httpOptions)
+  }
 }

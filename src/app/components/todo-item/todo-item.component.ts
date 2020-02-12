@@ -11,6 +11,7 @@ export class TodoItemComponent implements OnInit {
   @Input() todo:Item;
   @Input() tickets:Tickets;
   @Output() deleteTodo: EventEmitter<Item> = new EventEmitter();
+  @Output() editTicket: EventEmitter<any> = new EventEmitter();
 
   constructor(private ticketService:TicketService) { }
 
@@ -29,4 +30,10 @@ export class TodoItemComponent implements OnInit {
   onDelete(todo) {
     this.deleteTodo.emit(todo);
   }
+
+  // editItem(ticket:Item) {
+  //   this.editTicket.emit(ticket)
+  //   console.log("item function done")
+  // }
+
 }

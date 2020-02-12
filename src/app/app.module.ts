@@ -12,7 +12,7 @@ import { AddTicketComponent } from './components/add-todo/add-todo.component';
 import { AboutComponent } from './components/pages/about/about.component';
 import { TicketPopupComponent, TicketPopupContent } from './components/ticket-popup/ticket-popup.component';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { EditTicketPopupComponent } from './components/edit-ticket-popup/edit-ticket-popup.component';
+import { EditTicketPopupComponent, EditTicketPopupContent } from './components/edit-ticket-popup/edit-ticket-popup.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,8 @@ import { EditTicketPopupComponent } from './components/edit-ticket-popup/edit-ti
     AboutComponent,
     TicketPopupComponent,
     TicketPopupContent,
-    EditTicketPopupComponent
+    EditTicketPopupComponent,
+    EditTicketPopupContent
   ],
   imports: [
     BrowserModule,

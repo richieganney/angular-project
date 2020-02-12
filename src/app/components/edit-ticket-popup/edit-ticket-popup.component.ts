@@ -10,6 +10,8 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class EditTicketPopupContent implements OnInit {
   @Input() ticket:Item;
+  @Output() editItem: EventEmitter<any> = new EventEmitter();
+  @Output() editTicket: EventEmitter<any> = new EventEmitter();
   // @Input() tickets:Tickets;
   name:string;
   description:string;
@@ -20,20 +22,19 @@ export class EditTicketPopupContent implements OnInit {
   ngOnInit(): void {
   }
   
-  onSubmit() {
-    console.log("hello")
+  onSubmit(id:number) {
     console.log(this.name)
     console.log(this.description)
     console.log(this.category)
-    // while(true){}
-    // console.log(ticket.description)
-    // console.log(ticket.category)
-    // const ticket = {
-    //   name: this.name,
-    //   description: this.description,
-    //   category: this.category
-    // }
-    // this.addTodo.emit(todo);
+    console.log(id)
+    const ticket = {
+      name: this.name,
+      description: this.description,
+      category: this.category,
+      id: id
+    }
+    this.editTicket.emit(ticket);
+    console.log("edit function done")
   }
 }
 

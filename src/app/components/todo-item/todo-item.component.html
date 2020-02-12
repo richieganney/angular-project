@@ -5,7 +5,7 @@
             <li *ngFor="let ticket of tickets.add">
                 {{ ticket.name }}<button (click)="onDelete(ticket)" class="del">Delete</button>
                 <app-ticket-component [ticket]="ticket" ></app-ticket-component>
-                <app-edit-ticket-component [ticket]="ticket"></app-edit-ticket-component>
+                <app-edit-ticket-component (editTicket)="editTicket($event)" [ticket]="ticket"></app-edit-ticket-component>
             </li>
         </ul>
 
@@ -14,7 +14,7 @@
             <li *ngFor="let ticket of tickets.drop">
                 {{ ticket.name }}<button (click)="onDelete(ticket)" class="del">Delete</button>
                 <app-ticket-component [ticket]="ticket"></app-ticket-component>
-                <app-edit-ticket-component [ticket]="ticket"></app-edit-ticket-component>
+                <app-edit-ticket-component (editTicket)="editTicket($event)" [ticket]="ticket"></app-edit-ticket-component>
             </li>
         </ul>
 
@@ -23,7 +23,7 @@
             <li *ngFor="let ticket of tickets.keep">
                 {{ ticket.name }}<button (click)="onDelete(ticket)" class="del">Delete</button>
                 <app-ticket-component [ticket]="ticket"></app-ticket-component>
-                <app-edit-ticket-component [ticket]="ticket"></app-edit-ticket-component>
+                <app-edit-ticket-component (editTicket)="editTicket($event)" [ticket]="ticket"></app-edit-ticket-component>
             </li>
         </ul>
 
@@ -32,7 +32,7 @@
             <li *ngFor="let ticket of tickets.improve">
                 {{ ticket.name }}<button (click)="onDelete(ticket)" class="del">Delete</button>
                 <app-ticket-component [ticket]="ticket"></app-ticket-component>
-                <app-edit-ticket-component [ticket]="ticket"></app-edit-ticket-component>
+                <app-edit-ticket-component (editTicket)="editTicket($event)" [ticket]="ticket"></app-edit-ticket-component>
             </li>
         </ul>
     

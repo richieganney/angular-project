@@ -33,4 +33,9 @@ export class TicketsComponent implements OnInit {
       this.tickets[t.category].push(t);
     });
   }
+
+  editTicket(ticket:Item) {
+    this.ticketService.editTicket(ticket).subscribe();
+    console.log("service function DONE")
+  }
 }
