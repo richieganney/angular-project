@@ -5,9 +5,9 @@
   </div>
   <div class="modal-body">
     <form class="form" (ngSubmit)="onSubmit(ticket.id)">
-      <input type="text" name="name" [(ngModel)]="name" value="{{ ticket.name }}">
-      <input type="text" [(ngModel)]="description" name="description" value="{{ ticket.description }}">
-      <input type="text" [(ngModel)]="category" name="category" value="{{ ticket.category }}">
+      <input type="text" name="name" value="{{ ticket.name }}" [(ngModel)]="name">
+      <input type="text" value="{{ ticket.description }}" [(ngModel)]="description" name="description">
+      <input type="text" value="{{ ticket.category }}" [(ngModel)]="category" name="category">
       <input type="submit" value="Submit" class="btn">
     </form>
   </div>

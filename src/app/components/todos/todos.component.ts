@@ -34,8 +34,4 @@ export class TicketsComponent implements OnInit {
     });
   }
 
-  editTicket(ticket:Item) {
-    this.ticketService.editTicket(ticket).subscribe();
-    console.log("service function DONE")
-  }
 }

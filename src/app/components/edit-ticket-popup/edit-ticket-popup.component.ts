@@ -17,24 +17,19 @@ export class EditTicketPopupContent implements OnInit {
   description:string;
   category:string;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(public activeModal: NgbActiveModal, private ticketService:TicketService) {}
 
   ngOnInit(): void {
   }
   
   onSubmit(id:number) {
-    console.log(this.name)
-    console.log(this.description)
-    console.log(this.category)
-    console.log(id)
     const ticket = {
       name: this.name,
       description: this.description,
       category: this.category,
       id: id
     }
-    this.editTicket.emit(ticket);
-    console.log("edit function done")
+    this.ticketService.editTicket(ticket).subscribe();
   }
 }
 

@@ -20,11 +20,6 @@ export class TicketService {
     return this.http.get<Tickets>(`${this.ticketsUrl}`);
   }
 
-  // toggleCompleted(todo:Todo):Observable<any> {
-  //   const url = `${this.ticketsUrl}/${todo.id}`;
-  //   return this.http.put(url, todo, httpOptions);
-  // }
-
   deleteTicket(todo:Item) {
     const url = `${this.ticketsUrl}/${todo.id}`;
     return this.http.delete<Item>(url, httpOptions);
