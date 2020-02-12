@@ -28,8 +28,8 @@ export class TicketPopupComponent {
 }
 
 @Component({
-  selector: 'ngbd-modal-component',
-  templateUrl: './modal-component.html'
+  selector: 'ticket-popup-component',
+  templateUrl: './ticket-popup-component.html'
 })
 export class NgbdModalComponent {
   constructor(private modalService: NgbModal) {}
