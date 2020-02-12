@@ -30,6 +30,7 @@ export class EditTicketPopupContent implements OnInit {
       id: id
     }
     this.ticketService.editTicket(ticket).subscribe();
+    location.reload();
   }
 }
 
