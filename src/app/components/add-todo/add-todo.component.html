@@ -1,7 +1,13 @@
 <form class="form" (ngSubmit)="onSubmit()">
-    <input type="text" name="name" [(ngModel)]="name" placeholder="Name...">
-    <input type="text" name="description" [(ngModel)]="description" placeholder="Description...">
-    <input type="text" name="category" [(ngModel)]="category" placeholder="Category...">
+    <input type="text" name="name" [(ngModel)]="name" placeholder="Name..." required>
+    <input type="text" name="description" [(ngModel)]="description" placeholder="Description..." required>
+    <select (change)="selectChangeHandler($event)" required>
+        <option selected disabled hidden style='display: none' value=''></option>
+        <option value="add">Add</option>
+        <option value="drop">Drop</option>
+        <option value="keep">Keep</option>
+        <option value="improve">Improve</option>
+    </select>
     <input type="submit" value="Submit" class="btn">
 </form>
 

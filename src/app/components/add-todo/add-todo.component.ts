@@ -10,7 +10,7 @@ export class AddTicketComponent implements OnInit {
 
   name:string;
   description:string;
-  category:string;
+  selectedCategory:string;
 
   constructor() { }
 
@@ -21,9 +21,14 @@ export class AddTicketComponent implements OnInit {
     const todo = {
       name: this.name,
       description: this.description,
-      category: this.category
+      category: this.selectedCategory
     }
     this.addTodo.emit(todo);
+    location.reload();
+  }
+
+  selectChangeHandler(event:any) {
+    this.selectedCategory = event.target.value;
   }
 
 }

@@ -7,7 +7,13 @@
     <form class="form" (ngSubmit)="onSubmit(ticket.id)">
       <input type="text" name="name" value="{{ ticket.name }}" [(ngModel)]="name">
       <input type="text" value="{{ ticket.description }}" [(ngModel)]="description" name="description">
-      <input type="text" value="{{ ticket.category }}" [(ngModel)]="category" name="category">
+      <select (change)="selectChangeHandler($event)" required>
+          <option selected disabled hidden style='display: none' value=''></option>
+          <option value="add">Add</option>
+          <option value="drop">Drop</option>
+          <option value="keep">Keep</option>
+          <option value="improve">Improve</option>
+      </select>
       <input type="submit" value="Submit" class="btn">
     </form>
   </div>

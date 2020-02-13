@@ -15,7 +15,7 @@ export class EditTicketPopupContent implements OnInit {
   // @Input() tickets:Tickets;
   name:string;
   description:string;
-  category:string;
+  selectedCategory:string;
 
   constructor(public activeModal: NgbActiveModal, private ticketService:TicketService) {}
 
@@ -26,11 +26,15 @@ export class EditTicketPopupContent implements OnInit {
     const ticket = {
       name: this.name,
       description: this.description,
-      category: this.category,
+      category: this.selectedCategory,
       id: id
     }
     this.ticketService.editTicket(ticket).subscribe();
     location.reload();
+  }
+
+  selectChangeHandler(event:any) {
+    this.selectedCategory = event.target.value;
   }
 }
 
