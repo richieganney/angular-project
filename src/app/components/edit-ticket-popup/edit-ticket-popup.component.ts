@@ -16,9 +16,9 @@ export class EditTicketPopupContent implements OnInit {
   name:string;
   description:string;
   selectedCategory:string;
-
-  constructor(public activeModal: NgbActiveModal, private ticketService:TicketService) {}
-
+  
+  constructor(public activeModal:NgbActiveModal, private ticketService:TicketService) {}
+  
   ngOnInit(): void {
   }
   
@@ -51,6 +51,8 @@ export class EditTicketPopupComponent {
   edit(ticket:Item) {
     const modalRef = this.modalService.open(EditTicketPopupContent);
     modalRef.componentInstance.ticket = ticket;
+    modalRef.componentInstance.name = ticket.name;
+    modalRef.componentInstance.description = ticket.description;
   }
 
 }
