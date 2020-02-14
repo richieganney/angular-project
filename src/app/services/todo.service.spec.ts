@@ -75,26 +75,22 @@ it('expects service to POST data',
   })
 );
 
-  // beforeEach(() => { service = new ValueService(); });
+it('expects service to PUT data',
+  inject([HttpTestingController, TicketService],
+  (httpMock: HttpTestingController, service: TicketService) => {
 
-  // it('#getTickets should return real value', () => {
-  //   expect(service.getTickets()).toBe('real value');
-  // });
+    // We call the service
+    service.editTicket(mockItem()).subscribe(data => {
+      expect(data.id).toEqual(mockItem().id)
+    });
 
-  // it('#getObservableValue should return value from observable',
-  //   (done: DoneFn) => {
-  //   service.getObservableValue().subscribe(value => {
-  //     expect(value).toBe('observable value');
-  //     done();
-  //   });
-  // });
+    // We set the expectations for the HttpClient mock
+    const req = httpMock.expectOne(`http://localhost:3000/tickets/${mockItem().id}`);
+    expect(req.request.method).toBe('PUT');
 
-  // it('#getPromiseValue should return value from a promise',
-  //   (done: DoneFn) => {
-  //   service.getPromiseValue().then(value => {
-  //     expect(value).toBe('promise value');
-  //     done();
-  //   });
-  // });
+    // Then we set the fake data to be returned by the mock
+    req.flush(mockItem());
+  })
+);
 
 });
