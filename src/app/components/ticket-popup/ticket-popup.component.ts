@@ -14,7 +14,7 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
       </button>
     </div>
     <div class="modal-body">
-      <p>{{ ticket.description }}!</p>
+      <p>{{ ticket.description }}</p>
     </div>
     <div class="modal-footer">
     </div>

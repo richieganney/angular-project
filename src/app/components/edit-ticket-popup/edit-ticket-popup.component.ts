@@ -54,6 +54,4 @@ export class EditTicketPopupComponent {
     modalRef.componentInstance.name = ticket.name;
     modalRef.componentInstance.description = ticket.description;
   }
-
 }
-

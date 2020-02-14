@@ -6,15 +6,12 @@ describe('EditTicketPopupComponent', () => {
   let component: EditTicketPopupComponent;
   let fixture: ComponentFixture<EditTicketPopupComponent>;
 
-  let fixtureContent: ComponentFixture<EditTicketPopupContent>;
-  let content: EditTicketPopupContent;
-
-  const ticket = {
-    id: 1,
-    name: "test name",
-    description: "test description",
-    category: "add"
-  }
+  // const ticket = {
+  //   id: 1,
+  //   name: "test name",
+  //   description: "test description",
+  //   category: "add"
+  // }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -29,11 +26,14 @@ describe('EditTicketPopupComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-
-
-
-  });
+  it('edit button should work', async(() => {
+    spyOn(component, 'edit');
+    let button = fixture.debugElement.nativeElement.querySelector('button');
+    button.click();
+    fixture.whenStable().then(() => {
+      expect(component.edit).toHaveBeenCalled();
+    });
+  }));
 });
 
 // describe('EditTicketPopupContent', () => {
