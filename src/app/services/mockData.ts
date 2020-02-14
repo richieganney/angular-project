@@ -1,4 +1,4 @@
-import { Tickets } from '../models/Schema';
+import { Tickets, Item } from '../models/Schema';
 
 export const mockData = () => {
   const ticketData:Tickets = {
@@ -8,4 +8,9 @@ export const mockData = () => {
     improve: [{id: 4, name: "name", description: "desc", category: "improve"}]
   } 
   return ticketData;
+}
+
+export const mockItem = () => {
+  const item:Item = {id: 1, name: "name", description: "desc", category: "add"}
+  return item;
 }
