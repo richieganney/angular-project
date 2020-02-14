@@ -44,8 +44,7 @@ it('expects service to DELETE data',
 
     // We call the service
     service.deleteTicket(mockItem()).subscribe(data => {
-      var joc = jasmine.objectContaining;
-      expect(joc(data.id)).toEqual(mockItem().id)
+      expect(data.id).toEqual(mockItem().id)
     });
 
     // We set the expectations for the HttpClient mock
@@ -64,12 +63,12 @@ it('expects service to POST data',
     // We call the service
     service.addTicket(mockItem()).subscribe(data => {
       var joc = jasmine.objectContaining;
-      expect(joc(data)).toEqual(mockItem())
+      expect(data).toEqual(mockItem())
     });
 
     // We set the expectations for the HttpClient mock
-    const req = httpMock.expectOne('http://localhost:3000/tickets/');
-    expect(req.request.method).toEqual('PUT');
+    const req = httpMock.expectOne('http://localhost:3000/tickets');
+    expect(req.request.method).toEqual('POST');
 
     // Then we set the fake data to be returned by the mock
     req.flush(mockItem());
