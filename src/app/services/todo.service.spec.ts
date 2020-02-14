@@ -2,7 +2,6 @@ import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TicketService } from './todo.service';
 import { mockData, mockItem } from './mockData';
-import { Tickets } from '../models/Schema';
 
 describe('TicketService', () => {
   beforeEach(() => {
@@ -38,59 +37,48 @@ describe('TicketService', () => {
     })
 );
 
-it('expects service to DELETE data',
-  inject([HttpTestingController, TicketService],
-  (httpMock: HttpTestingController, service: TicketService) => {
+  it('expects service to DELETE data',
+    inject([HttpTestingController, TicketService],
+    (httpMock: HttpTestingController, service: TicketService) => {
 
-    // We call the service
-    service.deleteTicket(mockItem()).subscribe(data => {
-      expect(data.id).toEqual(mockItem().id)
-    });
+      service.deleteTicket(mockItem()).subscribe(data => {
+        expect(data.id).toEqual(mockItem().id)
+      });
 
-    // We set the expectations for the HttpClient mock
-    const req = httpMock.expectOne(`http://localhost:3000/tickets/${mockItem().id}`);
-    expect(req.request.method).toEqual('DELETE');
+      const req = httpMock.expectOne(`http://localhost:3000/tickets/${mockItem().id}`);
+      expect(req.request.method).toEqual('DELETE');
 
-    // Then we set the fake data to be returned by the mock
-    req.flush(mockItem());
-  })
-);
+      req.flush(mockItem());
+    })
+  );
 
-it('expects service to POST data',
-  inject([HttpTestingController, TicketService],
-  (httpMock: HttpTestingController, service: TicketService) => {
+  it('expects service to POST data',
+    inject([HttpTestingController, TicketService],
+    (httpMock: HttpTestingController, service: TicketService) => {
 
-    // We call the service
-    service.addTicket(mockItem()).subscribe(data => {
-      var joc = jasmine.objectContaining;
-      expect(data).toEqual(mockItem())
-    });
+      service.addTicket(mockItem()).subscribe(data => {
+        expect(data).toEqual(mockItem())
+      });
 
-    // We set the expectations for the HttpClient mock
-    const req = httpMock.expectOne('http://localhost:3000/tickets');
-    expect(req.request.method).toEqual('POST');
+      const req = httpMock.expectOne('http://localhost:3000/tickets');
+      expect(req.request.method).toEqual('POST');
 
-    // Then we set the fake data to be returned by the mock
-    req.flush(mockItem());
-  })
-);
+      req.flush(mockItem());
+    })
+  );
 
-it('expects service to PUT data',
-  inject([HttpTestingController, TicketService],
-  (httpMock: HttpTestingController, service: TicketService) => {
+  it('expects service to PUT data',
+    inject([HttpTestingController, TicketService],
+    (httpMock: HttpTestingController, service: TicketService) => {
 
-    // We call the service
-    service.editTicket(mockItem()).subscribe(data => {
-      expect(data.id).toEqual(mockItem().id)
-    });
+      service.editTicket(mockItem()).subscribe(data => {
+        expect(data.id).toEqual(mockItem().id)
+      });
 
-    // We set the expectations for the HttpClient mock
-    const req = httpMock.expectOne(`http://localhost:3000/tickets/${mockItem().id}`);
-    expect(req.request.method).toBe('PUT');
+      const req = httpMock.expectOne(`http://localhost:3000/tickets/${mockItem().id}`);
+      expect(req.request.method).toBe('PUT');
 
-    // Then we set the fake data to be returned by the mock
-    req.flush(mockItem());
-  })
-);
-
+      req.flush(mockItem());
+    })
+  );
 });
