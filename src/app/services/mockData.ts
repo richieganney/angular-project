@@ -1,6 +1,6 @@
 import { Tickets } from '../models/Schema';
 
-export const data = () => {
+export const mockData = () => {
   const ticketData:Tickets = {
     add: [{id: 1, name: "name", description: "desc", category: "add"}],
     drop: [{id: 2, name: "name", description: "desc", category: "drop"}],
