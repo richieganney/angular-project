@@ -75,26 +75,4 @@ it('expects service to POST data',
   })
 );
 
-  // beforeEach(() => { service = new ValueService(); });
-
-  // it('#getTickets should return real value', () => {
-  //   expect(service.getTickets()).toBe('real value');
-  // });
-
-  // it('#getObservableValue should return value from observable',
-  //   (done: DoneFn) => {
-  //   service.getObservableValue().subscribe(value => {
-  //     expect(value).toBe('observable value');
-  //     done();
-  //   });
-  // });
-
-  // it('#getPromiseValue should return value from a promise',
-  //   (done: DoneFn) => {
-  //   service.getPromiseValue().then(value => {
-  //     expect(value).toBe('promise value');
-  //     done();
-  //   });
-  // });
-
 });
