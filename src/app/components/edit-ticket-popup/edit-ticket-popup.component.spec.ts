@@ -4,6 +4,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpHandler } from '@angular/common/http';
 import { mockItem } from 'src/app/services/mockData';
 import { FormBuilder } from '@angular/forms';
+import { Item } from 'src/app/models/Schema';
+import { connect } from 'tls';
 
 describe('EditTicketPopupContent', () => {
   let content: EditTicketPopupContent;
@@ -47,36 +49,30 @@ describe('EditTicketPopupContent', () => {
     });
   }));
 
-  // it('onSubmit function should work', async(() => {
-  // //   spyOn(content, 'onSubmit');
-  // //   let button = fixtureContent.nativeElement.querySelector('.btn')
-  // //   button.click();
-  
-  //   // content
-  //   // component.form.controls['password'].setValue("123456789");  
+  it('selectChangeHandler should change the category value', () => {
+    expect(content.selectedCategory).toBe(undefined)
+    const cat = {target: {value: 'add'}}
+    content.selectChangeHandler(cat)
+    expect(content.selectedCategory).toBe('add')
+  })
 
-  //   // fixtureContent.detectChanges();
+  it('onSubmit should emit a ticket', () => {
+    const cat = {target: {value: 'add'}}
+    expect(content.reactiveForm.valid).toBeFalsy();
 
-  //   // let textName = fixtureContent.nativeElement.querySelector('.name')
-  //   // textName.value = 'Test Name';
+    content.reactiveForm.controls['name'].setValue("name");
+    content.reactiveForm.controls['description'].setValue("description");
+    content.reactiveForm.controls['category'].setValue("add");
+    content.selectChangeHandler(cat)
 
-  //   // let textDescription = fixtureContent.nativeElement.querySelector('.description')
-  //   // textDescription.value = 'Test Description';
+    expect(content.reactiveForm.valid).toBeTruthy();
 
-  //   // let button = fixture.debugElement.nativeElement.querySelector('.btn');
-  //   // button.click();
+    content.onSubmit(1);
 
-  //   // fixtureContent.detectChanges();
+    expect(content.ticketOnSubmit.name).toBe("name");
+    expect(content.ticketOnSubmit.description).toBe("description");
+    expect(content.ticketOnSubmit.category).toBe("add");
+  })
 
-  //   // console.log(textName)
-  //   // console.log(textDescription)
 
-  //   // console.log("HELLO")
-  //   // console.log(content)
-    
-
-  //   // fixtureContent.whenStable().then(() => {
-  //   //   expect(component.edit).toHaveBeenCalled();
-  //   // });
-  // }));
 });

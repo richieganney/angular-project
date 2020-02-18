@@ -3,7 +3,7 @@ import { Item, Tickets } from 'src/app/models/Schema';
 import { TicketService } from '../../services/todo.service';
 import "@angular/compiler";
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'edit-ticket-popup-content',
@@ -17,6 +17,7 @@ export class EditTicketPopupContent implements OnInit {
   name:string;
   description:string;
   selectedCategory:string;
+  ticketOnSubmit:Item;
   reactiveForm: FormGroup;
   
   constructor(public activeModal:NgbActiveModal, private ticketService:TicketService, private fb: FormBuilder) {}
@@ -27,21 +28,21 @@ export class EditTicketPopupContent implements OnInit {
   
   createForm() {
     this.reactiveForm = this.fb.group({
-      name: [this.name],
-      description: [this.description],
-      category: [this.selectedCategory]
+      name: [this.name, Validators.required],
+      description: [this.description, Validators.required],
+      category: [this.selectedCategory, Validators.required]
     });
   }
 
   onSubmit(id:number) {
-    const ticket = {
-      name: this.name,
-      description: this.description,
+    this.ticketOnSubmit = {
+      name: this.reactiveForm.value.name,
+      description: this.reactiveForm.value.description,
       category: this.selectedCategory,
       id: id
     }
-    this.ticketService.editTicket(ticket).subscribe();
-    location.reload();
+    // this.ticketService.editTicket(this.ticketOnSubmit).subscribe();
+    // location.reload();
   }
 
   selectChangeHandler(event:any) {
