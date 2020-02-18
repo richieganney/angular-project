@@ -4,10 +4,10 @@
     </button>
   </div>
   <div class="modal-body">
-    <form class="form" (ngSubmit)="onSubmit(ticket.id)">
-      <input type="text" [(ngModel)]="name" name="name">
-      <input type="text" [(ngModel)]="description" name="description">
-      <select (change)="selectChangeHandler($event)" required>
+    <form class="form" (ngSubmit)="onSubmit(ticket.id)" [formGroup]="reactiveForm">
+      <input type="text" formControlName="name">
+      <input type="text" formControlName="description">
+      <select (change)="selectChangeHandler($event)" formControlName="category" required>
           <option selected disabled hidden style='display: none' value=''></option>
           <option value="add">Add</option>
           <option value="drop">Drop</option>

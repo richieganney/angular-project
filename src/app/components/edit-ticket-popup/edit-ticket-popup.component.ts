@@ -3,6 +3,7 @@ import { Item, Tickets } from 'src/app/models/Schema';
 import { TicketService } from '../../services/todo.service';
 import "@angular/compiler";
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'edit-ticket-popup-content',
@@ -16,12 +17,22 @@ export class EditTicketPopupContent implements OnInit {
   name:string;
   description:string;
   selectedCategory:string;
+  reactiveForm: FormGroup;
   
-  constructor(public activeModal:NgbActiveModal, private ticketService:TicketService) {}
+  constructor(public activeModal:NgbActiveModal, private ticketService:TicketService, private fb: FormBuilder) {}
   
   ngOnInit(): void {
+    this.createForm();
   }
   
+  createForm() {
+    this.reactiveForm = this.fb.group({
+      name: [this.name],
+      description: [this.description],
+      category: [this.selectedCategory]
+    });
+  }
+
   onSubmit(id:number) {
     const ticket = {
       name: this.name,
@@ -53,5 +64,6 @@ export class EditTicketPopupComponent {
     modalRef.componentInstance.ticket = ticket;
     modalRef.componentInstance.name = ticket.name;
     modalRef.componentInstance.description = ticket.description;
+    modalRef.componentInstance.selectedCategory = ticket.category;
   }
 }
