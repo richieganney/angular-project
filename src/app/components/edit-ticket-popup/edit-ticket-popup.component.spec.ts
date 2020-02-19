@@ -72,6 +72,7 @@ describe('EditTicketPopupContent', () => {
     expect(content.ticketOnSubmit.name).toBe("name");
     expect(content.ticketOnSubmit.description).toBe("description");
     expect(content.ticketOnSubmit.category).toBe("add");
+    expect(content.ticketOnSubmit.id).toBe(1);
   })
 
 
