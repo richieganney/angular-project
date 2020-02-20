@@ -11,9 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class EditTicketPopupContent implements OnInit {
   @Input() ticket:Item;
-  @Output() editItem: EventEmitter<any> = new EventEmitter();
-  @Output() editTicket: EventEmitter<any> = new EventEmitter();
-  // @Input() tickets:Tickets;
+
   name:string;
   description:string;
   selectedCategory:string;

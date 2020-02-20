@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Item, Tickets } from 'src/app/models/Schema';
 import { TicketService } from '../../services/todo.service';
-import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-todo-item',
