@@ -5,8 +5,7 @@ import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-todo-item',
-  templateUrl: './todo-item.component.html',
-  styleUrls: ['./todo-item.component.css']
+  templateUrl: './todo-item.component.html'
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo:Item;

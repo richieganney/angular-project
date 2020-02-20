@@ -4,8 +4,7 @@ import { TicketService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todos',
-  templateUrl: './todos.component.html',
-  styleUrls: ['./todos.component.css']
+  templateUrl: './todos.component.html'
 })
 
 export class TicketsComponent implements OnInit {

@@ -52,8 +52,7 @@ export class EditTicketPopupContent implements OnInit {
 
 @Component({
   selector: 'app-edit-ticket-component',
-  templateUrl: './edit-ticket-popup.component.html',
-  styleUrls: ['./edit-ticket-popup.component.css']
+  templateUrl: './edit-ticket-popup.component.html'
 })
 export class EditTicketPopupComponent {
   @Input() ticket:Item;

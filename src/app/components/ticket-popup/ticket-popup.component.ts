@@ -29,8 +29,7 @@ export class TicketPopupContent {
 
 @Component({
   selector: 'app-ticket-component',
-  templateUrl: './ticket-popup.component.html',
-  styleUrls: ['./ticket-popup.component.css']
+  templateUrl: './ticket-popup.component.html'
 })
 export class TicketPopupComponent {
   @Input() ticket:Item;
