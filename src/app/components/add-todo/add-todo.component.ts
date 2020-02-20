@@ -24,7 +24,6 @@ export class AddTicketComponent implements OnInit {
       category: this.selectedCategory
     }
     this.addTodo.emit(todo);
-    location.reload();
   }
 
   selectChangeHandler(event:any) {

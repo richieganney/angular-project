@@ -1,44 +1,14 @@
 <div [ngClass]="setClasses()">
-
-        <h1 style="color: blueviolet;">Add</h1>
+    <div *ngFor="let index of indexes">
+        <h1 style="color: blueviolet;">{{ getCategory(index) }}</h1>
         <ul>
-            <li *ngFor="let ticket of tickets.add">
+            <li *ngFor="let ticket of ticketGetter()[index]">
                 {{ ticket.name }}
                 <app-ticket-component [ticket]="ticket" ></app-ticket-component>
                 <app-edit-ticket-component [ticket]="ticket"></app-edit-ticket-component>
                 <button (click)="onDelete(ticket)" class="del">Delete</button>
             </li>
         </ul>
-
-        <h1 style="color: blueviolet;">Drop</h1>
-        <ul>
-            <li *ngFor="let ticket of tickets.drop">
-                {{ ticket.name }}
-                <app-ticket-component [ticket]="ticket"></app-ticket-component>
-                <app-edit-ticket-component [ticket]="ticket"></app-edit-ticket-component>
-                <button (click)="onDelete(ticket)" class="del">Delete</button>
-            </li>
-        </ul>
-
-        <h1 style="color: blueviolet;">Keep</h1>
-        <ul>
-            <li *ngFor="let ticket of tickets.keep">
-                {{ ticket.name }}
-                <app-ticket-component [ticket]="ticket"></app-ticket-component>
-                <app-edit-ticket-component [ticket]="ticket"></app-edit-ticket-component>
-                <button (click)="onDelete(ticket)" class="del">Delete</button>
-            </li>
-        </ul>
-
-        <h1 style="color: blueviolet;">Improve</h1>
-        <ul>
-            <li *ngFor="let ticket of tickets.improve">
-                {{ ticket.name }}
-                <app-ticket-component [ticket]="ticket"></app-ticket-component>
-                <app-edit-ticket-component [ticket]="ticket"></app-edit-ticket-component>
-                <button (click)="onDelete(ticket)" class="del">Delete</button>
-            </li>
-        </ul>
-    
+    </div>    
 </div>
 
