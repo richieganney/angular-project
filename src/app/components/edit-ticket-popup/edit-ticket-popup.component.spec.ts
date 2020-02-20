@@ -6,6 +6,7 @@ import { mockItem } from 'src/app/services/mockData';
 import { FormBuilder } from '@angular/forms';
 import { Item } from 'src/app/models/Schema';
 import { connect } from 'tls';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('EditTicketPopupContent', () => {
   let content: EditTicketPopupContent;
@@ -22,7 +23,8 @@ describe('EditTicketPopupContent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ EditTicketPopupContent, EditTicketPopupComponent ],
-      providers:    [ {provide: NgbActiveModal, useValue: NgbActiveModalStub}, {provide: HttpClient, useValue: HttpClientStub}, {provide: HttpHandler, useValue: HttpHandlerStub}, {provide: FormBuilder} ]
+      providers:    [ NgbActiveModal, FormBuilder ],
+      imports: [ HttpClientTestingModule ]
       // providers:    [ {provide: NgbActiveModal}, {provide: HttpClient}, {provide: HttpHandler}, {provide: FormBuilder} ]
     })
     .compileComponents();

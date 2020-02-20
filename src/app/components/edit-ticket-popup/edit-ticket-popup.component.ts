@@ -41,7 +41,7 @@ export class EditTicketPopupContent implements OnInit {
       category: this.selectedCategory,
       id: id
     }
-    // this.ticketService.editTicket(this.ticketOnSubmit).subscribe();
+    this.ticketService.editTicket(this.ticketOnSubmit).subscribe();
     // location.reload();
   }
 

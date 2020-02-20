@@ -17,11 +17,4 @@ describe('TodosComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
-  console.log("TICKET")
-  console.log(component)
-
-  // it('should create todos component', () => {
-  //   expect(component).toBeDefined();
-  // });
 });
