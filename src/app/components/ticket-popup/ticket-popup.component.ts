@@ -22,7 +22,6 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TicketPopupContent {
   @Input() ticket:Item;
-  // @Input() tickets:Tickets;
 
   constructor(public activeModal: NgbActiveModal) {}
 }

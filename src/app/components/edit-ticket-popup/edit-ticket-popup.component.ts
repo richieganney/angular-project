@@ -11,6 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class EditTicketPopupContent implements OnInit {
   @Input() ticket:Item;
+  @Output() onEditContent: EventEmitter<any> = new EventEmitter();
 
   name:string;
   description:string;
@@ -39,7 +40,8 @@ export class EditTicketPopupContent implements OnInit {
       category: this.selectedCategory,
       id: id
     }
-    this.ticketService.editTicket(this.ticketOnSubmit).subscribe();
+    this.onEditContent.emit(this.ticketOnSubmit)
+    // this.ticketService.editTicket(this.ticketOnSubmit).subscribe();
     // location.reload();
   }
 
@@ -54,6 +56,7 @@ export class EditTicketPopupContent implements OnInit {
 })
 export class EditTicketPopupComponent {
   @Input() ticket:Item;
+  @Output() onEdit: EventEmitter<any> = new EventEmitter();
 
   constructor(private modalService: NgbModal) {}
 
@@ -63,5 +66,9 @@ export class EditTicketPopupComponent {
     modalRef.componentInstance.name = ticket.name;
     modalRef.componentInstance.description = ticket.description;
     modalRef.componentInstance.selectedCategory = ticket.category;
+  }
+
+  onEditContent(ticket) {
+    this.onEdit.emit(ticket);
   }
 }

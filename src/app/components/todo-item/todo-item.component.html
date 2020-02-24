@@ -5,7 +5,7 @@
             <li *ngFor="let ticket of ticketGetter()[index]">
                 {{ ticket.name }}
                 <app-ticket-component [ticket]="ticket" ></app-ticket-component>
-                <app-edit-ticket-component [ticket]="ticket"></app-edit-ticket-component>
+                <app-edit-ticket-component (onEdit)="onEdit($event)" [ticket]="ticket"></app-edit-ticket-component>
                 <button (click)="onDelete(ticket)" class="del">Delete</button>
             </li>
         </ul>

@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
   })
 }
 @Injectable({
@@ -26,7 +27,7 @@ export class TicketService {
   }
 
   addTicket(todo:Item):Observable<Item> {
-    return this.http.post<Item>(this.ticketsUrl, todo, httpOptions);
+    return this.http.post<Item>(this.ticketsUrl, todo, httpOptions)
   }
 
   editTicket(ticket:Item) {
