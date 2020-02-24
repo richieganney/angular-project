@@ -41,6 +41,6 @@ export class TodoItemComponent implements OnInit {
   }
 
   onEdit(ticket:Item) {
-    console.log(ticket);
+    this.editTicket.emit(ticket);
   }
 };

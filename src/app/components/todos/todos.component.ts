@@ -43,7 +43,11 @@ export class TicketsComponent implements OnInit {
 
   editTicket(ticket:Item) {
     this.ticketService.editTicket(ticket).subscribe(t => {
-      this.tickets[t.category].push(t);
+    }, error => {
+      const category = ticket.category
+      console.log(this.tickets[category])
+      const data = this.tickets[ticket.category].push(ticket);
+      this.handleResponse(error, data);
     });
   };
 
