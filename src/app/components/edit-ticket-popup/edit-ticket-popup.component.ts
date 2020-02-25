@@ -19,11 +19,11 @@ export class EditTicketPopupContent implements OnInit {
   ticketOnSubmit:Item;
   reactiveForm: FormGroup;
   
-  constructor(public activeModal:NgbActiveModal, private ticketService:TicketService, private fb: FormBuilder) {}
+  constructor(public activeModal:NgbActiveModal, private ticketService:TicketService, private fb: FormBuilder) {};
   
   ngOnInit(): void {
     this.createForm();
-  }
+  };
   
   createForm() {
     this.reactiveForm = this.fb.group({
@@ -31,23 +31,23 @@ export class EditTicketPopupContent implements OnInit {
       description: [this.description, Validators.required],
       category: [this.selectedCategory, Validators.required]
     });
-  }
+  };
 
-  onSubmit(id:number) {
+  onSubmit(id:number, func) {
     this.ticketOnSubmit = {
       name: this.reactiveForm.value.name,
       description: this.reactiveForm.value.description,
       category: this.selectedCategory,
       id: id
-    }
-    this.onEditContent.emit(this.ticketOnSubmit)
-    this.activeModal.dismiss('Cross click')
-  }
+    };
+    func.emit(this.ticketOnSubmit);
+    this.activeModal.dismiss('Cross click');
+  };
 
   selectChangeHandler(event:any) {
     this.selectedCategory = event.target.value;
-  }
-}
+  };
+};
 
 @Component({
   selector: 'app-edit-ticket-component',
@@ -57,14 +57,14 @@ export class EditTicketPopupComponent {
   @Input() ticket:Item;
   @Output() onEdit: EventEmitter<any> = new EventEmitter();
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal) {};
 
   edit(ticket:Item) {
     const modalRef = this.modalService.open(EditTicketPopupContent);
-    modalRef.componentInstance.onEditContent = this.onEdit
+    modalRef.componentInstance.onEditContent = this.onEdit;
     modalRef.componentInstance.ticket = ticket;
     modalRef.componentInstance.name = ticket.name;
     modalRef.componentInstance.description = ticket.description;
     modalRef.componentInstance.selectedCategory = ticket.category;
-  }
-}
+  };
+};

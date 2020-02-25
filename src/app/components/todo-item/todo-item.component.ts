@@ -16,31 +16,31 @@ export class TodoItemComponent implements OnInit {
   constructor(private ticketService:TicketService) { }
   
   ngOnInit(): void {
-  }
+  };
 
   // set dynamic classes
   setClasses() {
     let classes = {
       todo: true,
       tickets: true
-    }
+    };
     return classes;
-  }
+  };
 
   ticketGetter() {
-    return Object.values(this.tickets)
-  }
+    return Object.values(this.tickets);
+  };
 
   getCategory(index) {
-    const result = Object.keys(this.tickets)[index]
+    const result = Object.keys(this.tickets)[index];
     return `${result.charAt(0).toUpperCase()}${result.slice(1)}`;
-  }
+  };
 
   onDelete(todo) {
     this.deleteTodo.emit(todo);
-  }
+  };
 
   onEdit(ticket:Item) {
     this.editTicket.emit(ticket);
-  }
+  };
 };

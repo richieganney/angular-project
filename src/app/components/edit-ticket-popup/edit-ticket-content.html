@@ -4,7 +4,7 @@
     </button>
   </div>
   <div class="modal-body">
-    <form class="form" (ngSubmit)="onSubmit(ticket.id)" [formGroup]="reactiveForm">
+    <form class="form" (ngSubmit)="onSubmit(ticket.id, onEditContent)" [formGroup]="reactiveForm">
       <input type="text" formControlName="name">
       <input type="text" formControlName="description">
       <select (change)="selectChangeHandler($event)" formControlName="category" required>

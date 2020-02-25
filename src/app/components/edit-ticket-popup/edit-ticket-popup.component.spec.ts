@@ -1,29 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EditTicketPopupComponent, EditTicketPopupContent } from './edit-ticket-popup.component';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient, HttpHandler } from '@angular/common/http';
-import { mockItem } from 'src/app/services/mockData';
 import { FormBuilder } from '@angular/forms';
-import { Item } from 'src/app/models/Schema';
-import { connect } from 'tls';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TodoItemComponent } from '../todo-item/todo-item.component';
 
 describe('EditTicketPopupContent', () => {
   let content: EditTicketPopupContent;
   let fixtureContent: ComponentFixture<EditTicketPopupContent>;
-
   let component: EditTicketPopupComponent;
   let fixture: ComponentFixture<EditTicketPopupComponent>;
 
-  let NgbActiveModalStub: Partial<NgbActiveModal>;
-  let HttpClientStub: Partial<HttpClient>;
-  let HttpHandlerStub: Partial<HttpHandler>;
-  let FormBuilderStub: Partial<FormBuilder>;
+  let TodoItemComponentStub: Partial<TodoItemComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ EditTicketPopupContent, EditTicketPopupComponent ],
-      providers:    [ NgbActiveModal, FormBuilder ],
+      providers: [ NgbActiveModal, FormBuilder, {provide: TodoItemComponent, useClass: TodoItemComponentStub} ],
       imports: [ HttpClientTestingModule ]
       // providers:    [ {provide: NgbActiveModal}, {provide: HttpClient}, {provide: HttpHandler}, {provide: FormBuilder} ]
     })
@@ -59,6 +52,13 @@ describe('EditTicketPopupContent', () => {
   })
 
   it('onSubmit should emit a ticket', () => {
+
+    let TodoItemComponentStub = {
+      emit(){
+        return 0;
+      }
+    }
+
     const cat = {target: {value: 'add'}}
     expect(content.reactiveForm.valid).toBeFalsy();
 
@@ -69,13 +69,11 @@ describe('EditTicketPopupContent', () => {
 
     expect(content.reactiveForm.valid).toBeTruthy();
 
-    content.onSubmit(1);
+    content.onSubmit(1, TodoItemComponentStub);
 
     expect(content.ticketOnSubmit.name).toBe("name");
     expect(content.ticketOnSubmit.description).toBe("description");
     expect(content.ticketOnSubmit.category).toBe("add");
     expect(content.ticketOnSubmit.id).toBe(1);
-  })
-
-
+  });
 });
