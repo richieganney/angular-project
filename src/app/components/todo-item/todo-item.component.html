@@ -1,12 +1,17 @@
 <div [ngClass]="setClasses()">
-    <div *ngFor="let index of indexes">
-        <h1 style="color: blueviolet;">{{ getCategory(index) }}</h1>
+    <div style="float:left;width:25%" *ngFor="let index of indexes">
+        <h1 style="color: blueviolet; text-align: center;">{{ getCategory(index) }}</h1>
         <ul>
-            <li *ngFor="let ticket of ticketGetter()[index]">
-                {{ ticket.name }}
-                <app-ticket-component [ticket]="ticket" ></app-ticket-component>
-                <app-edit-ticket-component (onEdit)="onEdit($event)" [ticket]="ticket"></app-edit-ticket-component>
-                <button (click)="onDelete(ticket)" class="del">Delete</button>
+            <li class="card" style="list-style-type: none;" *ngFor="let ticket of ticketGetter()[index]">
+                <div class="container" style="margin: 1em; width:100%;">
+                    <div>{{ ticket.name }}</div>
+                    <br>
+                    <div style="margin-bottom: 10px">
+                        <app-ticket-component style="float:none;" [ticket]="ticket"></app-ticket-component>
+                        <app-edit-ticket-component style="float:left;" (onEdit)="onEdit($event)" [ticket]="ticket"></app-edit-ticket-component>
+                        <button style="float:left;" (click)="onDelete(ticket)" class="del">Delete</button>
+                    </div>
+                </div>
             </li>
         </ul>
     </div>    

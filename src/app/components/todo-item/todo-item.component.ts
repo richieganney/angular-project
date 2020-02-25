@@ -4,7 +4,8 @@ import { TicketService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-item',
-  templateUrl: './todo-item.component.html'
+  templateUrl: './todo-item.component.html',
+  styleUrls: ['./todo-item.component.css']
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo:Item;
