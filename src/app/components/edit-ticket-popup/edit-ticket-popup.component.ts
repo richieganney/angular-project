@@ -40,10 +40,8 @@ export class EditTicketPopupContent implements OnInit {
       category: this.selectedCategory,
       id: id
     }
-    this.activeModal.dismiss();
     this.onEditContent.emit(this.ticketOnSubmit)
-    // this.ticketService.editTicket(this.ticketOnSubmit).subscribe();
-    // location.reload();
+    this.activeModal.dismiss('Cross click')
   }
 
   selectChangeHandler(event:any) {

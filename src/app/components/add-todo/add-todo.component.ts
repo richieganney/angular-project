@@ -23,6 +23,7 @@ export class AddTicketComponent implements OnInit {
       category: this.selectedCategory
     }
     this.addTodo.emit(todo);
+    this.name = "", this.description = ""
   }
 
   selectChangeHandler(event:any) {

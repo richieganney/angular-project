@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Item, Tickets } from '../../models/Schema';
 import { TicketService } from '../../services/todo.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Variable } from '@angular/compiler/src/render3/r3_ast';
 
 @Component({
   selector: 'app-todos',
@@ -19,7 +18,7 @@ export class TicketsComponent implements OnInit {
   ngOnInit() {
     this.ticketService.getTickets().subscribe(tickets => {
       this.tickets = tickets;
-      this.isLoaded = true
+      this.isLoaded = true;
     });
   }
 
@@ -37,15 +36,16 @@ export class TicketsComponent implements OnInit {
     this.ticketService.addTicket(ticket).subscribe(t => {
     }, error => {
       const data = this.tickets[ticket.category].push(ticket);
-      this.handleResponse(error, data)
+      this.handleResponse(error, data);
     });
   }
 
   editTicket(ticket:Item) {
     this.ticketService.editTicket(ticket).subscribe(t => {
     }, error => {
-      const category = ticket.category
-      console.log(this.tickets[category])
+      Object.keys(this.tickets).forEach(category => 
+        this.tickets[category] = this.tickets[category].filter(t => t.id !== ticket.id)
+      );
       const data = this.tickets[ticket.category].push(ticket);
       this.handleResponse(error, data);
     });
