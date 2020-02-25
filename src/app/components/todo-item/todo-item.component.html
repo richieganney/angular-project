@@ -5,11 +5,18 @@
             <li class="card" style="list-style-type: none;" *ngFor="let ticket of ticketGetter()[index]">
                 <div class="container" style="margin: 1em; width:100%;">
                     <div>{{ ticket.name }}</div>
+                    <button style="position:absolute;top:0;right:0;
+                    border: none;
+                    padding: 2px 15px;
+                    text-align: center;
+                    text-decoration: none;
+                    font-size: 30px;
+                    margin: 4px 2px;
+                    cursor: pointer;" (click)="onDelete(ticket)" class="del">&#x2718;</button>
                     <br>
                     <div style="margin-bottom: 10px">
                         <app-ticket-component style="float:none;" [ticket]="ticket"></app-ticket-component>
-                        <app-edit-ticket-component style="float:left;" (onEdit)="onEdit($event)" [ticket]="ticket"></app-edit-ticket-component>
-                        <button style="float:left;" (click)="onDelete(ticket)" class="del">Delete</button>
+                        <app-edit-ticket-component style="float:left;margin-right: 0.5em;" (onEdit)="onEdit($event)" [ticket]="ticket"></app-edit-ticket-component>
                     </div>
                 </div>
             </li>
