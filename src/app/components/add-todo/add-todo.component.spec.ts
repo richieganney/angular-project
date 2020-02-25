@@ -22,4 +22,11 @@ describe('AddTicketComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('selectChangeHandler should change the category value', () => {
+    expect(component.selectedCategory).toBe(undefined)
+    const cat = {target: {value: 'add'}}
+    component.selectChangeHandler(cat)
+    expect(component.selectedCategory).toBe('add')
+  })
 });
