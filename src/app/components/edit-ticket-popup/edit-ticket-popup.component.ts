@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Item, Tickets } from 'src/app/models/Schema';
+import { Item } from 'src/app/models/Schema';
 import { TicketService } from '../../services/todo.service';
 import "@angular/compiler";
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -19,7 +19,7 @@ export class EditTicketPopupContent implements OnInit {
   ticketOnSubmit:Item;
   reactiveForm: FormGroup;
   
-  constructor(public activeModal:NgbActiveModal, private ticketService:TicketService, private fb: FormBuilder) {};
+  constructor(public activeModal:NgbActiveModal, private fb: FormBuilder) {};
   
   ngOnInit(): void {
     this.createForm();

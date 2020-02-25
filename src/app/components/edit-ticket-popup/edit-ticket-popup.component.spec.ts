@@ -51,7 +51,7 @@ describe('EditTicketPopupContent', () => {
     expect(content.selectedCategory).toBe('add')
   })
 
-  it('onSubmit should emit a ticket', () => {
+  it('EDIT TICKET: onSubmit should emit a ticket', () => {
 
     let TodoItemComponentStub = {
       emit(){
