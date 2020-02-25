@@ -1,7 +1,7 @@
-<form class="form" (ngSubmit)="onSubmit()">
-    <input type="text" name="name" [(ngModel)]="name" placeholder="Name..." required>
-    <input type="text" name="description" [(ngModel)]="description" placeholder="Description..." required>
-    <select (change)="selectChangeHandler($event)" required>
+<form class="form" (ngSubmit)="onSubmit()" [formGroup]="reactiveForm">
+    <input type="text" formControlName="name" placeholder="Name..." required>
+    <input type="text" formControlName="description" placeholder="Description..." required>
+    <select (change)="selectChangeHandler($event)" formControlName="category" required>
         <option selected disabled hidden style='display: none' value=''></option>
         <option value="drop">Drop</option>
         <option value="add">Add</option>

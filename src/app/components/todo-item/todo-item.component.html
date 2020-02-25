@@ -7,7 +7,7 @@
                     <div>{{ ticket.name }}</div>
                     <br>
                     <div style="margin-bottom: 10px">
-                        <app-ticket-component style="float:none;" [ticket]="ticket"></app-ticket-component>
+                        <app-ticket-component class="view-button" [ticket]="ticket"></app-ticket-component>
                         <app-edit-ticket-component style="float:left;" (onEdit)="onEdit($event)" [ticket]="ticket"></app-edit-ticket-component>
                         <button style="float:left;" (click)="onDelete(ticket)" class="del">Delete</button>
                     </div>
