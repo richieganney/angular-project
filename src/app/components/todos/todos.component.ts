@@ -51,7 +51,7 @@ export class TicketsComponent implements OnInit {
     });
   };
 
-  private handleResponse(response:HttpErrorResponse, data:any) {
+  handleResponse(response:HttpErrorResponse, data:any) {
     if(response.status == 201 || 200) {
       return data
     } else {
