@@ -12,8 +12,11 @@ export class TicketsComponent implements OnInit {
   todos:any;
   tickets:Tickets;
   isLoaded:boolean = false;
+  ticketService:TicketService
 
-  constructor(private ticketService:TicketService) { }
+  constructor(public ticketServices:TicketService) {
+    this.ticketService = ticketServices 
+  }
 
   ngOnInit() {
     this.ticketService.getTickets().subscribe(tickets => {

@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TicketsComponent } from './todos.component';
 import { HttpHeaders, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TicketService } from 'src/app/services/todo.service';
 
 describe('TodosComponent', () => {
   let component: TicketsComponent;
@@ -54,5 +55,13 @@ describe('TodosComponent', () => {
     component.handleResponse(response, "DummyData")
     
     expect(window.console.log).toHaveBeenCalled();
+  });
+
+  it("editTicket should edit a ticket", () => {
+    // component.ticketService = {
+    //   http: HttpClient,
+    //   ticketsUrl: ""
+    // }
+    console.log(component.ticketService)
   });
 });
