@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Item, Tickets } from 'src/app/models/Schema';
-import { TicketService } from '../../services/todo.service';
+import { Component, Input } from '@angular/core';
+import { Item } from 'src/app/models/Schema';
 import "@angular/compiler";
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -21,10 +20,10 @@ export class TicketPopupContent {
 export class TicketPopupComponent {
   @Input() ticket:Item;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal) {};
 
   open(ticket:Item) {
     const modalRef = this.modalService.open(TicketPopupContent);
     modalRef.componentInstance.ticket = ticket;
-  }
-}
+  };
+};

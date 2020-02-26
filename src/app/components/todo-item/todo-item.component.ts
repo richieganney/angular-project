@@ -14,7 +14,7 @@ export class TodoItemComponent implements OnInit {
   @Output() editTicket: EventEmitter<Item> = new EventEmitter();
   indexes:Array<number> = [0, 1, 2, 3];
 
-  constructor(private ticketService:TicketService) { }
+  constructor(private ticketService:TicketService) {}
   
   ngOnInit(): void {
   };
@@ -28,17 +28,17 @@ export class TodoItemComponent implements OnInit {
     return classes;
   };
 
-  ticketGetter() {
-    return Object.values(this.tickets);
+  ticketGetter(tickets:Tickets) {
+    return Object.values(tickets);
   };
 
-  getCategory(index) {
-    const result = Object.keys(this.tickets)[index];
+  getCategory(index, tickets:Tickets): String {
+    const result = Object.keys(tickets)[index];
     return `${result.charAt(0).toUpperCase()}${result.slice(1)}`;
   };
 
-  onDelete(todo) {
-    this.deleteTodo.emit(todo);
+  onDelete(ticket, func) {
+    func.emit(ticket);
   };
 
   onEdit(ticket:Item) {
