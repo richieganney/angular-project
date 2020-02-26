@@ -52,7 +52,7 @@ export class TicketsComponent implements OnInit {
   };
 
   handleResponse(response:HttpErrorResponse, data:any) {
-    if(response.status == 201 || 200) {
+    if(response.status == 201 || response.status == 200) {
       return data
     } else {
       console.log(response);

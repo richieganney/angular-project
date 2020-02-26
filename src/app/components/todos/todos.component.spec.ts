@@ -22,7 +22,7 @@ describe('TodosComponent', () => {
   });
 
   it("handleResponse should return the correct data", () => {
-    let response:HttpErrorResponse = {
+    const response:HttpErrorResponse = {
       status: 201,
       headers: new HttpHeaders(),
       statusText: "OK", 
@@ -34,11 +34,11 @@ describe('TodosComponent', () => {
       type: HttpEventType.ResponseHeader
     }
 
-    expect(component.handleResponse(response, 0)).toBe(0)
+    expect(component.handleResponse(response, "DummyData")).toBe("DummyData")
   });
 
   it("handleResponse should return the dummy error", () => {
-    let response:HttpErrorResponse = {
+    const response:HttpErrorResponse = {
       status: 404,
       headers: new HttpHeaders(),
       statusText: "OK", 
@@ -49,7 +49,10 @@ describe('TodosComponent', () => {
       error: {error: SyntaxError},
       type: HttpEventType.ResponseHeader
     }
-
-    expect(component.handleResponse(response, 0)).toBe(0)
+    
+    spyOn(window.console, 'log');
+    component.handleResponse(response, "DummyData")
+    
+    expect(window.console.log).toHaveBeenCalled();
   });
 });
