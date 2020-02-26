@@ -48,7 +48,7 @@ describe('TodoItemComponent', () => {
     }
 
     component.onDelete(mockData(), TicketsComponentStub);
-    expect(0).toEqual(0)
+    expect(TicketsComponentStub).toHaveBeenCalled;
   });
 
   it("onEdit should edit a ticket", () => {
@@ -59,7 +59,7 @@ describe('TodoItemComponent', () => {
     }
 
     component.onEdit(mockItem(), TicketsComponentStub);
-    expect(0).toEqual(0)
+    expect(TicketsComponentStub).toHaveBeenCalled;
   });
 
   it("setClasses should set the classes", () => {
