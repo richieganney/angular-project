@@ -41,7 +41,7 @@ export class TodoItemComponent implements OnInit {
     func.emit(ticket);
   };
 
-  onEdit(ticket:Item) {
+  onEdit(ticket:Item, func) {
     this.editTicket.emit(ticket);
   };
 };

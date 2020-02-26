@@ -3,6 +3,7 @@ import { TodoItemComponent } from './todo-item.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { mockData } from './mockData';
 import { TicketsComponent } from '../todos/todos.component';
+import { mockItem } from 'src/app/services/mockData';
 
 describe('TodoItemComponent', () => {
   let component: TodoItemComponent;
@@ -40,6 +41,31 @@ describe('TodoItemComponent', () => {
   });
 
   it("onDelete should delete a ticket", () => {
+    let TicketsComponentStub = {
+      emit(){
+        return 0;
+      }
+    }
 
+    component.onDelete(mockData(), TicketsComponentStub);
+  });
+
+  it("onEdit should edit a ticket", () => {
+    let TicketsComponentStub = {
+      emit(){
+        return 0;
+      }
+    }
+
+    component.onEdit(mockItem(), TicketsComponentStub);
+  });
+
+  it("setClasses should set the classes", () => {
+    let mockClasses = {
+      todo: true,
+      tickets: true
+    };
+
+    expect(component.setClasses()).toEqual(mockClasses)
   });
 });
