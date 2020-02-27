@@ -56,12 +56,4 @@ describe('TodosComponent', () => {
     
     expect(window.console.log).toHaveBeenCalled();
   });
-
-  it("editTicket should edit a ticket", () => {
-    // component.ticketService = {
-    //   http: HttpClient,
-    //   ticketsUrl: ""
-    // }
-    console.log(component.ticketService)
-  });
 });
